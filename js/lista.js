@@ -1,5 +1,9 @@
-import {db} from "./firebaseConfig"
-import {collection, getDocs, deleteDoc, doc} from "firebase/firestore"
+import {db} from "./firebaseConfig.js";
+import {collection,
+     getDocs,
+      deleteDoc,
+       doc
+    } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
 const collRef = collection(db, "contasPagar");
 const ul = document.getElementById("lista");
@@ -7,6 +11,9 @@ const ul = document.getElementById("lista");
 async function carregarLista() {
 const snapshot = await getDocs(collRef);
 ul.innerHTML = "";
+if (snapshot.empty){
+    ul.innerHTML = "<li> Nenhuma conta encontrada.</li>";
+}
 
 snapshot.forEach(docSnap => { 
     const data = docSnap.data();
@@ -15,10 +22,10 @@ snapshot.forEach(docSnap => {
 const li = document.createElement("li");
 li.innerHTML = `
 <strong>${data.nome}</strong> - ${data.produto}<br>
-Valor Original: R$ ${data.valor.toFixed(2)}<br>
+Valor Original: R$ ${data.valor}<br>
 Dias de Atraso: ${data.diasAtraso}<br>
-Juros acumulado: R$ ${data.valorJuros.toFixed(2)}<br>
-<strong>Total a Pagar: R$ ${data.total.toFixed(2)}</strong><br>
+Juros acumulado: R$ ${data.valorJuros}<br>
+<strong>Total a Pagar: R$ ${data.total}</strong><br>
 <button onclick = "editar('${id}')">Editar</button>
 <button onclick = "excluir('${id}')">Excluir</button>
 `;
@@ -27,7 +34,7 @@ ul.appendChild(li);
 }
  window.editar = (id) => {
     localStorage.setItem("editarId", id);
-    window.location.href = "../contasPagar.html";
+    window.location.href = "contasPagar.html";
 };
 
 window.excluir = async (id) => {
