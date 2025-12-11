@@ -1,9 +1,8 @@
 import { db } from "./firebaseConfig.js";
 import { collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-const collRef = collection(db, "contasPagar"); 
+const collRef = collection(db, "contasReceber"); 
 const ul = document.getElementById("lista");
-
 function formatarMoeda(valor) {
     return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
     style="currency", currency="BRL"
@@ -26,10 +25,10 @@ async function carregarLista() {
         const li = document.createElement("li");
         li.innerHTML = `
             <strong>${data.nome}</strong><br>
-            Valor Original: R$ ${data.valor.toFixed(2)}<br>
+            Valor Original: R$ ${data.valor.toFixed(2).replace(".", ",")}<br>
             Dias de Atraso: ${data.diasAtraso}<br>
-            Juros acumulado: R$ ${data.valorJuros.toFixed(2)}<br>
-            <strong>Total a Pagar: R$ ${data.total.toFixed(2)}</strong><br>
+            Juros acumulado: R$ ${data.valorJuros.toFixed(2).replace(".", ",")}<br>
+            <strong>Total a Pagar: R$ ${data.total.toFixed(2).replace(".", ",")}</strong><br>
             <button onclick="pagar('${id}')">Pagar</button>
             <button onclick="editar('${id}')">Editar</button>
             <button onclick="excluir('${id}')">Excluir</button>

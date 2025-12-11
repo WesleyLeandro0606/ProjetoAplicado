@@ -1,7 +1,7 @@
 import { db } from "./firebaseConfig.js";
 import { collection, addDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-const collRef = collection(db, "contasPagar");
+const collRef = collection(db, "contasReceber");
 const editarId = localStorage.getItem("editarId");
 const form = document.getElementById("formreceber");
 const botaoLista = document.getElementById("botaoLista");

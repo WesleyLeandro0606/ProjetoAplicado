@@ -29,10 +29,10 @@ snapshot.forEach(docSnap => {
 const li = document.createElement("li");
 li.innerHTML = `
 <strong>${data.nome}</strong> - ${data.produto}<br>
-Valor Original: R$ ${data.valor}<br>
+Valor Original: R$ ${data.valor.toFixed(2).replace(".", ",")}<br>
 Dias de Atraso: ${data.diasAtraso}<br>
-Juros acumulado: R$ ${data.valorJuros}<br>
-<strong>Total a Pagar: R$ ${data.total}</strong><br>
+Juros acumulado: R$ ${data.valorJuros.toFixed(2).replace(".", ",")}<br>
+<strong>Total a Pagar: R$ ${data.total.toFixed(2).replace(".", ",")}</strong><br>
  <button onclick="pagar('${id}')">Pagar</button>
 <button onclick = "editar('${id}')">Editar</button>
 <button onclick = "excluir('${id}')">Excluir</button>
