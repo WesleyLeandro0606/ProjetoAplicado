@@ -23,9 +23,7 @@ function getValores({ nome, produto, valor, vencimento, juros }) {
     const vencimentoData = new Date(vencimento.value.trim());
     const hoje = new Date();
 
-    if (isNaN(valorNumero) || valorNumero <= 0) {
-        throw new Error("Valor inválido. Deve ser um número maior que zero.");
-    }
+    
 
     const diffTempo = hoje - vencimentoData;
     const diasAtraso = Math.floor(diffTempo / (1000 * 60 * 60 * 24));

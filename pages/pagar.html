@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar</title>
+    <link rel="stylesheet" href="../css/style-pagar.css">
+</head>
+<body>
+
+    <h1>Pagar</h1>
+
+    <div id="infoConta"></div>
+
+    <form id="formPagamento">
+        <label for="valorPagamento">Valor do Pagamento:</label>
+        <input type="number" id="valorPagamento" required step="0.01">
+        <br><br>
+
+        <button type="submit">Confirmar Pagamento</button>
+        <button onclick="window.location.href='lista.html'; return false;">Cancelar</button>
+    </form>
+
+    <script type="module" src="../js/pagar.js"></script>
+</body>
+</html>

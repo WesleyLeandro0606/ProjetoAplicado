@@ -5,15 +5,8 @@ import {collection,
        doc
     } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-const collRef = collection(db, "contasPagar");
+const collRef = collection(db, "pagamentos");
 const ul = document.getElementById("lista");
-
-function formatarMoeda(valor) {
-    return valor.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-    });
-}
 
 async function carregarLista() {
 const snapshot = await getDocs(collRef);
@@ -28,35 +21,23 @@ snapshot.forEach(docSnap => {
 
 const li = document.createElement("li");
 li.innerHTML = `
-<strong>${data.nome}</strong> - ${data.produto}<br>
+<strong>${data.nome}</strong><br>
 Valor Original: R$ ${data.valor}<br>
 Dias de Atraso: ${data.diasAtraso}<br>
-Juros acumulado: R$ ${data.valorJuros}<br>
-<strong>Total a Pagar: R$ ${data.total}</strong><br>
- <button onclick="pagar('${id}')">Pagar</button>
-<button onclick = "editar('${id}')">Editar</button>
-<button onclick = "excluir('${id}')">Excluir</button>
 `;
 ul.appendChild(li);
 });
 }
  window.editar = (id) => {
     localStorage.setItem("editarId", id);
-    window.location.href = "contasPagar.html";
+    window.location.href = "pagamentos.html";
 };
 
 window.excluir = async (id) => {
     if (confirm("Tem certeza que deseja excluir esta conta a pagar?")) {
-        await deleteDoc(doc(db, "contasPagar", id));
+        await deleteDoc(doc(db, "pagamentos", id));
         carregarLista();
     }
 };
 
-window.pagar = (id) => {
-    localStorage.setItem("pagarId", id);
-    window.location.href = "pagar.html";
-};
 carregarLista();
-
-
-
