@@ -2,35 +2,48 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contas a Receber</title>
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Contas a Pagar</title>
 </head>
 
 <body>
-  <h1>CONTAS A RECEBER</h1>
-  <form id="formreceber">
 
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome">
+    <header>
+        <h2>Sistema Financeiro</h2>
+    </header>
 
-    <label for="vencimento">Vencimento:</label>
-    <input type="date" id="vencimento" name="vencimento">
+    <div class="container">
+        <h1>CONTAS A PAGAR</h1>
 
-    <label for="juros">Juros:</label>
-    <input type="text" id="juros" name="juros">
+        <form id="formContasPagar">
 
-    <label for="valor">Valor:</label>
-    <input type="text" id="valor" name="valor">
+            <label for="nome">Nome da empresa:</label>
+            <input type="text" id="nome" name="nome">
 
-    <div>
-      <button type="submit" id="botaoSalvar">Salvar</button>
-      <button id="botaoLista">Lista</button>
+            <label for="produto">Produto:</label>
+            <input type="text" id="produto" name="produto">
+
+            <label for="valor">Valor:</label>
+            <input type="number" id="valor" name="valor">
+
+            <label for="vencimento">Vencimento:</label>
+            <input type="date" id="vencimento" name="vencimento">
+
+            <label for="juros">Juros (% ao dia):</label>
+            <input type="number" id="juros" name="juros">
+
+            <button type="submit" id="botaoSalvar">Salvar</button>
+            <button id="botaoLista">Lista</button>
+        </form>
     </div>
-  </form>
-  <script type="module" src="../js/receber.js"></script>
 
+    <footer>
+        <p>DESENVOLVIDO POR: @brendmatos @NNS11 @WesleyLeandro0606</p>
+    </footer>
+
+    <script type="module" src="../js/contasPagar.js"></script>
 </body>
 
 </html>

@@ -8,19 +8,30 @@
 </head>
 <body>
 
-    <h1>Pagar</h1>
+        <header>
+        <h2>Sistema Financeiro</h2>
+    </header>
+    <div class="container">
 
-    <div id="infoConta"></div>
+        <h1>Pagar</h1>
 
-    <form id="formPagamento">
-        <label for="valorPagamento">Valor do Pagamento:</label>
-        <input type="text" id="valorPagamento" required step="0.01">
-        <br><br>
+        <div id="infoConta"></div>
 
-        <button type="submit">Confirmar Pagamento</button>
-        <button onclick="window.location.href='lista.html'; return false;">Cancelar</button>
-    </form>
+        <form id="formPagamento">
+            <label for="valorPagamento">Valor do Pagamento:</label>
+            <input type="text" id="valorPagamento" required step="0.01">
+
+            <button type="submit">Confirmar Pagamento</button>
+            <button onclick="window.location.href='lista.html'; return false;">Cancelar</button>
+        </form>
+
+    </div>
 
     <script type="module" src="../js/pagar.js"></script>
+
+        <footer>
+        <p>DESENVOLVIDO POR: @brendmatos @NNS11 @WesleyLeandro0606</p>
+    </footer>
+
 </body>
 </html>
