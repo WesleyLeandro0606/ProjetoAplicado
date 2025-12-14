@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style-pagamentos.css">
-    <title>Document</title>
+    <title>Contas a Pagar</title>
 </head>
 
 <body>
       <header>
         <h2>Sistema Financeiro</h2>
     </header>
+
     <h1>CONTAS A PAGAR</h1>
+
     <form id="formContasPagar">
         <label for="nome"> Nome da empresa:</label>
         <input type="text" id="nome" name="nome">
@@ -36,6 +38,12 @@
         <br>
         <button type="submit" id="botaoSalvar">Salvar</button>
         <button id="botaoLista">Lista</button>
+        <button onclick="voltarMenu()">Menu</button>
+        <script>
+  function voltarMenu() {
+    window.location.href = "menu.html";
+  }
+</script>
     </form>
 
 

@@ -64,7 +64,7 @@ form.addEventListener("submit", async (e) => {
             await addDoc(collRef, dados);
             alert("Conta a pagar adicionada com sucesso!");
         }
-        window.location.href = "../pages/lista.html";
+        window.location.href = "../html/lista.html";
     } catch (error) {
         console.error("Erro ao salvar conta a pagar: ", e);
         alert("Erro ao salvar conta a pagar: " + error.message);

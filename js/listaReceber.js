@@ -44,7 +44,7 @@ window.editar = (id) => {
 
 window.excluir = async (id) => {
     if (confirm("Tem certeza que deseja excluir esta conta a pagar?")) {
-        await deleteDoc(doc(db, "contasPagar", id));
+        await deleteDoc(doc(db, "receber", id));
         carregarLista();
     }
 };

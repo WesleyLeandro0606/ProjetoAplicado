@@ -50,7 +50,7 @@ function getValores({ nome, vencimento, juros, valor }) {
 
 
     botaoLista.addEventListener("click", () => {
-        window.location.href = "lista.html";
+        window.location.href = "listaReceber.html";
     });
 
 
@@ -62,7 +62,7 @@ form.addEventListener("submit", async (e) => {
         const dados = getValores(inputs);
 
         if (editarId) {
-            const docRef = doc(db, "contasPagar", editarId);
+            const docRef = doc(db, "receber", editarId);
             await updateDoc(docRef, dados);
             alert("Conta atualizada com sucesso!");
             localStorage.removeItem("editarId");
@@ -71,7 +71,7 @@ form.addEventListener("submit", async (e) => {
             alert("Conta adicionada com sucesso!");
         }
 
-        window.location.href = "../pages/lista.html";
+        window.location.href = "../html/listaReceber.html";
 
     } catch (error) {
         console.error("Erro ao salvar:", error);

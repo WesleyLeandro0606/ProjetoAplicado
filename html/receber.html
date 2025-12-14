@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Contas a Pagar</title>
+    <title>Contas a receber</title>
 </head>
 
 <body>
@@ -13,11 +13,10 @@
     <header>
         <h2>Sistema Financeiro</h2>
     </header>
-
+<h1>CONTAS PARA RECEBER</h1>
     <div class="container">
-        <h1>CONTAS A PAGAR</h1>
 
-        <form id="formContasPagar">
+        <form id="formreceber">
 
             <label for="nome">Nome da empresa:</label>
             <input type="text" id="nome" name="nome">
@@ -36,6 +35,12 @@
 
             <button type="submit" id="botaoSalvar">Salvar</button>
             <button id="botaoLista">Lista</button>
+                    <button onclick="voltarMenu()">Menu</button>
+        <script>
+  function voltarMenu() {
+    window.location.href = "menu.html";
+  }
+</script>
         </form>
     </div>
 
@@ -43,7 +48,7 @@
         <p>DESENVOLVIDO POR: @brendmatos @NNS11 @WesleyLeandro0606</p>
     </footer>
 
-    <script type="module" src="../js/contasPagar.js"></script>
+    <script type="module" src="../js/receber.js"></script>
 </body>
 
 </html>

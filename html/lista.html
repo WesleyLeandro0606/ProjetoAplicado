@@ -15,10 +15,17 @@
   <button type="button" onclick="window.location.href='contasPagar.html'">
     Adicionar Nova Conta
   </button>
+          <button onclick="voltarMenu()">Menu</button>
+        <script>
+  function voltarMenu() {
+    window.location.href = "menu.html";
+  }
+</script>
 
   <div id="listaContas">
     <ul id="lista"></ul>
   </div>
+  
 
   <script type="module" src="../js/lista.js"></script>
   <footer>
