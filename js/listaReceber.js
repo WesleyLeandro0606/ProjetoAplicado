@@ -1,7 +1,7 @@
 import { db } from "./firebaseConfig.js";
 import { collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-const collRef = collection(db, "contasReceber"); 
+const collRef = collection(db, "receber"); 
 const ul = document.getElementById("lista");
 function formatarMoeda(valor) {
     return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -43,7 +43,7 @@ window.editar = (id) => {
 };
 
 window.excluir = async (id) => {
-    if (confirm("Tem certeza que deseja excluir esta conta a pagar?")) {
+    if (confirm("Tem certeza que deseja excluir esta conta a receber?")) {
         await deleteDoc(doc(db, "receber", id));
         carregarLista();
     }
