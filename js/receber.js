@@ -1,11 +1,9 @@
 import { db } from "./firebaseConfig.js";
-import { collection, addDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-const collRef = collection(db, "contasReceber");
-const editarId = localStorage.getItem("editarId");
+const collRef = collection(db, "receber");
 const form = document.getElementById("formreceber");
 const botaoLista = document.getElementById("botaoLista");
-
 
 function getInput() {
     return {
@@ -16,24 +14,18 @@ function getInput() {
     };
 }
 
-
 function getValores({ nome, vencimento, juros, valor }) {
-
     const valorNumero = parseFloat(valor.value.trim().replace(",", "."));
     const jurosNumero = parseFloat(juros.value.trim().replace(",", "."));
 
-    if (isNaN(valorNumero) || valorNumero <= 0) {
-        throw new Error("O valor informado é inválido.");
-    }
+   
 
     const vencimentoData = new Date(vencimento.value.trim());
     const hoje = new Date();
 
-   
     const diff = hoje - vencimentoData;
     const diasAtraso = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
 
-  
     const valorJuros = valorNumero * (jurosNumero / 100) * diasAtraso;
     const total = valorNumero + valorJuros;
 
@@ -48,11 +40,9 @@ function getValores({ nome, vencimento, juros, valor }) {
     };
 }
 
-
-    botaoLista.addEventListener("click", () => {
-        window.location.href = "listaReceber.html";
-    });
-
+botaoLista.addEventListener("click", () => {
+    window.location.href = "listaReceber.html";
+});
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -61,22 +51,13 @@ form.addEventListener("submit", async (e) => {
         const inputs = getInput();
         const dados = getValores(inputs);
 
-        if (editarId) {
-            const docRef = doc(db, "receber", editarId);
-            await updateDoc(docRef, dados);
-            alert("Conta atualizada com sucesso!");
-            localStorage.removeItem("editarId");
-        } else {
-            await addDoc(collRef, dados);
-            alert("Conta adicionada com sucesso!");
-        }
+        await addDoc(collRef, dados);
+        alert("Conta adicionada com sucesso!");
 
-        window.location.href = "../html/listaReceber.html";
+        window.location.href = "listaReceber.html";
 
     } catch (error) {
         console.error("Erro ao salvar:", error);
         alert("Erro ao salvar: " + error.message);
     }
 });
-
-

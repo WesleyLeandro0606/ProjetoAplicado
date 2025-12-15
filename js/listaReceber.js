@@ -2,12 +2,7 @@ import { db } from "./firebaseConfig.js";
 import { collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
 const collRef = collection(db, "receber"); 
-const ul = document.getElementById("lista");
-function formatarMoeda(valor) {
-    return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-    style="currency", currency="BRL"
-}
-
+const ul = document.getElementById("listaReceber");
 
 async function carregarLista() {
     const snapshot = await getDocs(collRef);
@@ -30,17 +25,11 @@ async function carregarLista() {
             Juros acumulado: R$ ${data.valorJuros.toFixed(2).replace(".", ",")}<br>
             <strong>Total a Pagar: R$ ${data.total.toFixed(2).replace(".", ",")}</strong><br>
             <button onclick="pagar('${id}')">Pagar</button>
-            <button onclick="editar('${id}')">Editar</button>
             <button onclick="excluir('${id}')">Excluir</button>
         `;
         ul.appendChild(li);
     });
 }
-
-window.editar = (id) => {
-    localStorage.setItem("editarId", id);
-    window.location.href = "receber.html";
-};
 
 window.excluir = async (id) => {
     if (confirm("Tem certeza que deseja excluir esta conta a receber?")) {
@@ -48,8 +37,13 @@ window.excluir = async (id) => {
         carregarLista();
     }
 };
-window.pagar =  (id) => {
+
+window.pagar = (id) => {
     localStorage.setItem("pagarId", id);
-    window.location.href = "pagar.html";
-}
+    window.location.href = "receber.html";
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    carregarLista();
+});
 carregarLista();

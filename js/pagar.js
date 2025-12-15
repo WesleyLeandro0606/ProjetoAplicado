@@ -11,6 +11,7 @@ const form = document.getElementById("formPagamento");
 let conta = null;
 
 
+
 function moeda(v) {
     return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
@@ -79,6 +80,5 @@ form.addEventListener("submit", async (e) => {
     await updateDoc(docRef, novosDados);
 
     alert("Pagamento registrado com sucesso!");
-    localStorage.removeItem("pagarId");
     window.location.href = "lista.html";
 });

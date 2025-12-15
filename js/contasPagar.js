@@ -1,8 +1,7 @@
 import { db } from "./firebaseConfig.js";
-import { collection, addDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
 const collRef = collection(db, "contasPagar");
-const editarId = localStorage.getItem("editarId");
 const form = document.getElementById("formContasPagar");
 const botaoLista = document.getElementById("botaoLista");
 
@@ -17,17 +16,15 @@ function getInput() {
 }
 
 function getValores({ nome, produto, valor, vencimento, juros }) {
-
     const valorNumero = parseFloat(valor.value.trim().replace(",", "."));
     const jurosNumero = parseFloat(juros.value.trim().replace(",", "."));
     const vencimentoData = new Date(vencimento.value.trim());
     const hoje = new Date();
 
-    
-
     const diffTempo = hoje - vencimentoData;
     const diasAtraso = Math.floor(diffTempo / (1000 * 60 * 60 * 24));
     const dias = diasAtraso > 0 ? diasAtraso : 0;
+
     const valorJuros = valorNumero * (jurosNumero / 100) * dias;
     const total = valorNumero + valorJuros;
 
@@ -40,7 +37,6 @@ function getValores({ nome, produto, valor, vencimento, juros }) {
         diasAtraso: dias,
         valorJuros,
         total
-
     };
 }
 
@@ -55,18 +51,13 @@ form.addEventListener("submit", async (e) => {
         const inputs = getInput();
         const dados = getValores(inputs);
 
-        if (editarId) {
-            const docRef = doc(db, "contasPagar", editarId);
-            await updateDoc(docRef, dados);
-            alert("Conta a pagar atualizada com sucesso!");
-            localStorage.removeItem("editarId");
-        } else {
-            await addDoc(collRef, dados);
-            alert("Conta a pagar adicionada com sucesso!");
-        }
-        window.location.href = "../html/lista.html";
+        await addDoc(collRef, dados);
+
+        alert("Conta a pagar adicionada com sucesso!");
+        window.location.href = "lista.html";
+
     } catch (error) {
-        console.error("Erro ao salvar conta a pagar: ", e);
+        console.error("Erro ao salvar conta a pagar: ", error);
         alert("Erro ao salvar conta a pagar: " + error.message);
     }
 });

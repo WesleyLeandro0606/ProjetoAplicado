@@ -8,31 +8,32 @@
 </head>
 <body>
 
-    <header>
-        <h2>Sistema Financeiro</h2>
-    </header>
+  <header>
+    <h2>Sistema Financeiro</h2>
+  </header>
 
-    <h1>Lista de Contas a Receber</h1>
+  <h1>Lista de Contas a Receber</h1>
 
-    <button onclick="window.location.href='receber.html'">
-        Adicionar Nova Conta
-    </button>
-            <button onclick="voltarMenu()">Menu</button>
-        <script>
-  function voltarMenu() {
-    window.location.href = "menu.html";
-  }
-</script>
+  <button onclick="window.location.href='receber.html'">
+    Adicionar Nova Conta
+  </button>
+  <button onclick="voltarMenu()">Menu</button>
 
-    <div id="listaContas">
-        <ul id="lista"></ul>
-    </div>
+  <script>
+    function voltarMenu() {
+      window.location.href = "menu.html";
+    }
+  </script>
 
-    <footer>
-        <p>DESENVOLVIDO POR: @brendmatos @NNS11 @WesleyLeandro0606</p>
-    </footer>
+  <div id="listaContas">
+    <ul id="listaReceber"></ul>
+  </div>
 
-    <script type="module" src="../js/listaReceber.js"></script>
+  <footer>
+    <p>DESENVOLVIDO POR: @brendmatos @NNS11 @WesleyLeandro0606</p>
+  </footer>
+
+  <script type="module" src="../js/listaReceber.js"></script>
 
 </body>
 </html>

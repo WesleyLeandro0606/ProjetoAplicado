@@ -1,54 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Contas a receber</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contas a Receber</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
-
 <body>
 
-    <header>
-        <h2>Sistema Financeiro</h2>
-    </header>
-<h1>CONTAS PARA RECEBER</h1>
-    <div class="container">
+  <header>
+    <h2>Sistema Financeiro</h2>
+  </header>
 
-        <form id="formreceber">
+  <h1>CONTAS PARA RECEBER</h1>
+  
+  <div class="container">
+    <form id="formreceber">
 
-            <label for="nome">Nome da empresa:</label>
-            <input type="text" id="nome" name="nome">
+      <label for="nome">Nome do cliente:</label>
+      <input type="text" id="nome" name="nome" required>
 
-            <label for="produto">Produto:</label>
-            <input type="text" id="produto" name="produto">
+      <label for="valor">Valor:</label>
+      <input type="number" id="valor" name="valor" required>
 
-            <label for="valor">Valor:</label>
-            <input type="number" id="valor" name="valor">
+      <label for="vencimento">Vencimento:</label>
+      <input type="date" id="vencimento" name="vencimento" required>
 
-            <label for="vencimento">Vencimento:</label>
-            <input type="date" id="vencimento" name="vencimento">
+      <label for="juros">Juros (% ao dia):</label>
+      <input type="number" id="juros" name="juros" required>
 
-            <label for="juros">Juros (% ao dia):</label>
-            <input type="number" id="juros" name="juros">
+      <button type="submit" id="botaoSalvar">Salvar</button>
+      <button type="button" id="botaoLista">Lista</button>
+      <button onclick="voltarMenu()">Menu</button>
+    </form>
+  </div>
 
-            <button type="submit" id="botaoSalvar">Salvar</button>
-            <button id="botaoLista">Lista</button>
-                    <button onclick="voltarMenu()">Menu</button>
-        <script>
-  function voltarMenu() {
-    window.location.href = "menu.html";
-  }
-</script>
-        </form>
-    </div>
+  <footer>
+    <p>DESENVOLVIDO POR: @brendmatos @NNS11 @WesleyLeandro0606</p>
+  </footer>
 
-    <footer>
-        <p>DESENVOLVIDO POR: @brendmatos @NNS11 @WesleyLeandro0606</p>
-    </footer>
+  <script>
+   
+    function voltarMenu() {
+      window.location.href = "menu.html";
+    }
+  </script>
 
-    <script type="module" src="../js/receber.js"></script>
+  <script type="module" src="../js/receber.js"></script>
 </body>
-
 </html>
