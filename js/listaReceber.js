@@ -38,11 +38,6 @@ window.excluir = async (id) => {
     }
 };
 
-window.pagar = (id) => {
-    localStorage.setItem("pagarId", id);
-    window.location.href = "receber.html";
-};
-
 document.addEventListener("DOMContentLoaded", () => {
     carregarLista();
 });

@@ -28,10 +28,6 @@ Dias de Atraso: ${data.diasAtraso}<br>
 ul.appendChild(li);
 });
 }
- window.editar = (id) => {
-    localStorage.setItem("editarId", id);
-    window.location.href = "pagamentos.html";
-};
 
 window.excluir = async (id) => {
     if (confirm("Tem certeza que deseja excluir esta conta a pagar?")) {
